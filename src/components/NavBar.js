@@ -2,12 +2,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import CartWidget from "./CartWidget.js"
 
-const NavBar = (props) => {
+const NavBar = () => {
 
     return (
         <>
-          <Navbar bg="dark" variant="dark" expand="lg">
+            <Navbar bg="dark" variant="dark" expand="lg">
             <Navbar.Brand href="">Vista al Valle</Navbar.Brand>
             <Navbar.Toggle />
             <Navbar.Collapse>
@@ -21,7 +22,9 @@ const NavBar = (props) => {
                 </NavDropdown>
                 <Nav.Link href="">Habitaciones</Nav.Link>
               </Nav>
+              <CartWidget/>
             </Navbar.Collapse>
+            
           </Navbar>
         </>
       );
