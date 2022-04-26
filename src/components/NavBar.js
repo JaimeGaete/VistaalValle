@@ -4,12 +4,12 @@ import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import CartWidget from "./CartWidget.js"
 
-const NavBar = () => {
+const NavBar = ({ sitio }) => {
 
     return (
         <>
             <Navbar bg="dark" variant="dark" expand="lg">
-            <Navbar.Brand href="">Vista al Valle</Navbar.Brand>
+            <Navbar.Brand href="">{sitio}</Navbar.Brand>
             <Navbar.Toggle />
             <Navbar.Collapse>
               <Nav className="mr-auto">
