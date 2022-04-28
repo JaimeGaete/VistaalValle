@@ -10,15 +10,15 @@ const catalogo = [
    },
    {
      id: 2,
-     name: "Xiaomi Mi Band II",
-     price: 200,
-     image: "https://i01.appmifile.com/webfile/globalimg/products/pc/redmi-smart-band-pro/section06-02.png"
+     name: "Experiencia Día en una Viña para Dos",
+     price: 200.000,
+     image: "https://chileestuyo.cl/wp-content/uploads/2018/04/VinaMontGrass_instagram-768x576.jpg"
    },
    {
      id: 3,
-     name: "Xiaomi Mi Band III",
-     price: 300,
-     image: "https://i01.appmifile.com/webfile/globalimg/products/pc/redmi-smart-band-pro/section06-03.png"
+     name: "Compra tus vinos favoritos",
+     price: 60.000,
+     image: "https://lavinoteca.vteximg.com.br/arquivos/ids/159219-1000-1000/4987_1.jpg?v=637544672699700000"
    }
 ]
 
