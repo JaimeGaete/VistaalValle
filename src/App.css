@@ -36,3 +36,19 @@
     transform: rotate(360deg);
   }
 }
+
+.card-container {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,350px));
+  grid-gap:1rem
+}
+
+.card {
+  padding:1rem;
+  box-shadow:1px 1px 3px rgba(0,0,0,.3);
+  transition:all .3s;
+  border-radius:3px}
+
+.card img{width:20%}
+
+.card:hover{transform:scale(1.1) }
