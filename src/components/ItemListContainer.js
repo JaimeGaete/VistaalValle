@@ -1,47 +1,36 @@
 import { useEffect, useState } from "react"
 import ItemList from "./ItemList"
-
-const catalogo = [
-   {
-     id: 1,
-     name: "Spa Relajante en Pareja",
-     price: 100.000,
-     image: "https://images.pexels.com/photos/3101547/pexels-photo-3101547.jpeg"
-   },
-   {
-     id: 2,
-     name: "Actividades en una Viña para Dos",
-     price: 200.000,
-     image: "https://chileestuyo.cl/wp-content/uploads/2018/04/VinaMontGrass_instagram-768x576.jpg"
-   },
-   {
-     id: 3,
-     name: "Lleva tus Vinos favoritos",
-     price: 60.000,
-     image: "https://lavinoteca.vteximg.com.br/arquivos/ids/159219-1000-1000/4987_1.jpg?v=637544672699700000"
-   }
-]
+import {useParams} from 'react-router-dom';
+import catalogo from "./productos.json"
 
 const ItemListContainer = () => {
 
    const [cargando, setCargando] = useState(true)
    const [productos, setProductos] = useState([])
 
+   const {categorias} = useParams();
+
    useEffect(() => {
 
-      const prod = new Promise((res,rej)=>{
-        
+      if(categorias===undefined){
+         console.log("Pido todos los productos")
+      }
+      else{
+         console.log("Pido los productos de la categoria: ",categorias)
+      }
+
+      const prod = new Promise((res)=>{
          setTimeout(()=>{   
-            res(catalogo)
-         },2000)
+            res(catalogo)},2000)
       })
+      
       prod
          .then(()=>{
             setCargando(false) 
             setProductos(catalogo)
          })
          
-   },[])
+   },[categorias])
 
    if (cargando) {
       return (
