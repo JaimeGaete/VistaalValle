@@ -10,14 +10,12 @@ const App = () => {
       <BrowserRouter>
       <NavBar sitio="Vista al Valle"/>
        <Routes>
-        <Route path="/" element={<ItemListContainer />}/>
-        <Route path="/productos/:categorias" element={<ItemListContainer />}/>
-        <Route path="/producto/:id" element={<ItemDetailContainer/>}/>
+        <Route element={<ItemListContainer />}   path="/" />
+        <Route element={<ItemListContainer />}   path="/categoria/:categoriaId" />
+        <Route element={<ItemDetailContainer />} path='/item/:id' />
       </Routes>
       </BrowserRouter>
   )
 }
 
 export default App;
-
-

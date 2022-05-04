@@ -1,33 +1,26 @@
-import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
-import ItemDetail from "./ItemDetail"
-import catalogo from "./productos.json"
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import { getItem } from "./productos"
+import ItemDetail from './ItemDetail'
 
 const ItemDetailContainer = () => {
 
-   const [cargando, setCargando] = useState(true)
-   const [producto, setProducto] = useState([])
-   const {id} = useParams()
-   
-   useEffect(()=>{
-      const resultado = catalogo.filter((producto)=>{
-        return producto.id === id
-      })[0]
-      setProducto(resultado)
-      setCargando(false)
-    })
-  
-    if(cargando){
-      return (
-        <p>Cargando...</p>
-      )
-    }else{
-      return (
-        <>
-          <ItemDetail/>
-        </>
-      )
+  const [product, setProduct] = useState({})
+  const { id } = useParams()
+
+  useEffect(() => {
+    if (id === undefined) {
+      getItem().then(response => setProduct(response))
+    } else {
+      getItem().then(response => setProduct(response[id]))
     }
-  }
-  
-  export default ItemDetailContainer
+  }, [id])
+
+  return (
+    <div>
+      <ItemDetail product={product} />
+    </div>
+  )
+}
+
+export default ItemDetailContainer
