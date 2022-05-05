@@ -3,18 +3,18 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import CartWidget from "./CartWidget.js"
+import { Link , NavLink } from 'react-router-dom';
 
 const NavBar = ({ sitio }) => {
 
     return (
         <>
             <Navbar bg="dark" variant="dark" expand="lg">
-            <Navbar.Brand href="">{sitio}</Navbar.Brand>
+            <Navbar.Brand as={Link} to="/" >{sitio}</Navbar.Brand>
             <Navbar.Toggle />
             <Navbar.Collapse>
               <Nav className="mr-auto">
-                <Nav.Link href="">Galeria</Nav.Link>
-                <Nav.Link href="">Experiencias</Nav.Link>
+                <NavLink to="/categoria/1" className="nav-link">Experiencias</NavLink>
                 <NavDropdown title="Productos">
                   <NavDropdown.Item href="">Vinos</NavDropdown.Item>
                   <NavDropdown.Item href="">Piscos</NavDropdown.Item>
@@ -24,7 +24,6 @@ const NavBar = ({ sitio }) => {
               </Nav>
               <CartWidget/>
             </Navbar.Collapse>
-            
           </Navbar>
         </>
       );
