@@ -14,13 +14,13 @@ const NavBar = ({ sitio }) => {
             <Navbar.Toggle />
             <Navbar.Collapse>
               <Nav className="mr-auto">
-                <NavLink to="/categoria/1" className="nav-link">Experiencias</NavLink>
+                <NavLink to="/categoria/spa" className="nav-link">SPA</NavLink>
                 <NavDropdown title="Productos">
                   <NavDropdown.Item href="">Vinos</NavDropdown.Item>
                   <NavDropdown.Item href="">Piscos</NavDropdown.Item>
                   <NavDropdown.Item href="">Cervezas</NavDropdown.Item>
                 </NavDropdown>
-                <Nav.Link href="">Habitaciones</Nav.Link>
+                <NavLink to="/categoria/vinas" className="nav-link">Viñas</NavLink>
               </Nav>
               <CartWidget/>
             </Navbar.Collapse>
