@@ -30,37 +30,22 @@ export const catalogo = [
   }
 ];
 
-
 const ItemDetailContainer = () => {
 
-  const [cargando,setCargando] = useState(true)
-  const [producto,setProducto] = useState({})
+  const [cargando, setCargando] = useState(true)
+  const [producto, setProducto] = useState({})
   const {id} = useParams()
 
   useEffect(()=>{
 
-    toast.info("Cargando detalle del producto ...")
-
-     const detalleProducto = catalogo.filter((producto)=>{
-      return producto.id===id
-    })[0]
-
-    const pedidoDeDetalle = new Promise ((res)=>{
-      setTimeout(()=>{
-      res(detalleProducto)
-      },2000)
-    })
-
-      .then(()=>{
-        setCargando(false)
-        setProducto(detalleProducto)
-        toast.dismiss()
-        toast.success("Detalle de Producto Cargado")
-      })
-  })
+      toast.info("Cargando detalle del producto ...")
+      const resultado = catalogo.filter((producto)=>{ return producto.id==id })[0]
+      setProducto(resultado)
+      setCargando(false)
+    },)
 
   if(cargando){
-    return <p>Cargando...</p>;
+    return (<p>Cargando...</p>);
   }else{
     return (
       <>
@@ -71,4 +56,3 @@ const ItemDetailContainer = () => {
 }
 
 export default ItemDetailContainer
-

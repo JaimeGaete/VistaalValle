@@ -16,9 +16,9 @@ const NavBar = ({ sitio }) => {
               <Nav className="mr-auto">
                 <NavLink to="/categoria/spa" className="nav-link">SPA</NavLink>
                 <NavDropdown title="Productos">
-                  <NavDropdown.Item href="">Vinos</NavDropdown.Item>
-                  <NavDropdown.Item href="">Piscos</NavDropdown.Item>
-                  <NavDropdown.Item href="">Cervezas</NavDropdown.Item>
+                  <NavDropdown.Item as={NavLink} to="/producto/2">Vinos</NavDropdown.Item>
+                  <NavDropdown.Item as={NavLink} to="/producto/2">Piscos</NavDropdown.Item>
+                  <NavDropdown.Item as={NavLink} to="/producto/2">Cervezas</NavDropdown.Item>
                 </NavDropdown>
                 <NavLink to="/categoria/vinas" className="nav-link">Viñas</NavLink>
               </Nav>
