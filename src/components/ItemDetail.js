@@ -1,14 +1,26 @@
 import { Link } from 'react-router-dom'
+import React, { useState } from "react"
+import ItemCount from "./ItemCount";
 
 const ItemDetail = ({ producto }) => {
-    return (    
-        <article className="card cardDetail">
+
+  // aca recibo la cantidad de ItemCount, y estado para ocultar el componente cuando se confirma la cantidad
+  const[cantidadCounter, setCantidadCounter] = useState(0)
+  const [isCounter, setIsCounter] = useState(false)
+  
+  const onAdd = (cantidad) => { 
+    setCantidadCounter(cantidad) 
+    setIsCounter(true)
+  }
+
+  return (    
+        <article className="card cardDetail mx-3 mt-3 px-3" style={{ width: '25rem'  }}>
           <h3>{producto.nombre}</h3>
-          <img src={producto.imagen} alt="{producto.nombre}"/>    
+          <img src={producto.imagen} alt="{producto.nombre}" style={{ width: '10rem' }}/>    
           <p>Precio: $ {producto.precio} </p>
-          <button>
-            <Link to="/">Terminar Compra</Link>
-          </button>
+          {isCounter ? <button><Link to="/cart">Comprar ahora {cantidadCounter} unidades </Link></button> : <ItemCount init={1} stock={producto.stock} onAdd={onAdd} /> }
+          <br></br>
+          
         </article>
       )
     }

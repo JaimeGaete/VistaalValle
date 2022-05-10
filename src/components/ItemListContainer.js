@@ -10,7 +10,8 @@ export const catalogo = [
     "precio" : 100,
     "categoriaId" : "spa",
     "imagen" : "https://images.pexels.com/photos/3101547/pexels-photo-3101547.jpeg",
-    "description" : "Spa Relajante en Pareja"
+    "description" : "Spa Relajante en Pareja",
+    "stock" : 10
   },
   {
     "id" : 1,
@@ -18,7 +19,8 @@ export const catalogo = [
     "precio" : 200,
     "categoriaId" : "vinas",
     "imagen" : "https://chileestuyo.cl/wp-content/uploads/2018/04/VinaMontGrass_instagram-768x576.jpg",
-    "description" : "Actividades en una Viña para Dos"
+    "description" : "Actividades en una Viña para Dos",
+    "stock" : 10
   },
   {
     "id" : 2,
@@ -26,7 +28,8 @@ export const catalogo = [
     "precio" : 25,
     "categoriaId" : "vinos",
     "imagen" : "https://lavinoteca.vteximg.com.br/arquivos/ids/159219-1000-1000/4987_1.jpg?v=637544672699700000",
-    "description" : "Lleva tus Vinos favoritos"
+    "description" : "Lleva tus Vinos favoritos",
+    "stock" : 10
   }
 ];
 
