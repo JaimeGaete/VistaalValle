@@ -46,7 +46,7 @@ const ItemListContainer = () => {
     const pedido = new Promise ((res)=>{
       setTimeout(()=>{
       res(catalogo)
-      },500)
+      },200)
     })
     .then(()=>{
       if(categoriaId===undefined){

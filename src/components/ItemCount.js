@@ -15,8 +15,10 @@ const ItemCount = ({init, stock, onAdd}) => {
 
   const restar = () => 
   {
-    setCantidad(cantidad - 1)
-    stock = stock + 1
+    if (cantidad > 0) {
+      setCantidad(cantidad - 1)
+      stock = stock + 1
+     }
   }
 
   const confirmar = () => 
