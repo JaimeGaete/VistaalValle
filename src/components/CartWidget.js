@@ -1,10 +1,18 @@
-import "../css/styles.css";
-import cartIcon from '../img/cart-icon.png';
+import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { contexto } from "./CartContext";
 
 const CartWidget = () => {
+    const {cantidad_total} = useContext(contexto);
+    
     return (
-            <img src={cartIcon} className="carticon" alt="cart" />
+      <Link to="/carrito">
+        <span className="material-icons">
+          shopping_cart
+        </span>
+          {cantidad_total}
+      </Link>
     )
-}
-	
-export default CartWidget;
+  };
+  
+  export default CartWidget;
