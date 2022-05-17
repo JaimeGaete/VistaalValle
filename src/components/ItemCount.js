@@ -7,7 +7,7 @@ const ItemCount = ({init, stock, onAdd}) => {
   
   const sumar = () => 
   {
-    if (cantidad < stock) {
+    if (cantidad <= stock) {
       setCantidad(cantidad + 1)
       stock = stock - 1     
     }
@@ -23,8 +23,10 @@ const ItemCount = ({init, stock, onAdd}) => {
 
   const confirmar = () => 
   {
-    setConfirmado(true)
-    onAdd(cantidad)
+    if (cantidad > 0) {
+      setConfirmado(true)
+      onAdd(cantidad)
+    }
   }
 
   if(!confirmado)

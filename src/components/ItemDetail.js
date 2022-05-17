@@ -21,10 +21,11 @@ const ItemDetail = ({ producto }) => {
         <article className="card cardDetail mx-3 mt-3 px-3" style={{ width: '25rem'  }}>
           <h3>{producto.nombre}</h3>
           <img src={producto.imagen} alt="{producto.nombre}" style={{ width: '10rem' }}/>    
+          <p>{producto.description} </p>
+          <p>Stock: {producto.stock} </p>
           <p>Precio: $ {producto.precio} </p>
-          {isCounter ? <button><Link to="/carrito">Comprar ahora {cantidadCounter} unidades </Link></button> : <ItemCount init={1} stock={producto.stock} onAdd={onAdd} /> }
+          {isCounter ? <button><Link to="/carrito">Terminar mi compra</Link></button> : <ItemCount init={1} stock={producto.stock} onAdd={onAdd} /> }
           <br></br>
-          
         </article>
       )
     }

@@ -4,8 +4,13 @@ import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import CartWidget from "./CartWidget.js"
 import { Link , NavLink } from 'react-router-dom';
+import { useContext } from "react"
+import { contexto } from "./CartContext";
 
 const NavBar = ({ sitio }) => {
+
+    // voy a usar cantidad_total para mostrar/ocultar el CartWidget
+    const {cantidadTotal} = useContext(contexto)
 
     return (
         <>
@@ -17,12 +22,12 @@ const NavBar = ({ sitio }) => {
                 <NavLink to="/categoria/spa" className="nav-link">SPA</NavLink>
                 <NavDropdown title="Productos">
                   <NavDropdown.Item as={NavLink} to="/producto/2">Vinos</NavDropdown.Item>
-                  <NavDropdown.Item as={NavLink} to="/producto/2">Piscos</NavDropdown.Item>
-                  <NavDropdown.Item as={NavLink} to="/producto/2">Cervezas</NavDropdown.Item>
+                  <NavDropdown.Item as={NavLink} to="/producto/5">Viña SEÑA Ensamblaje</NavDropdown.Item>
+                  <NavDropdown.Item as={NavLink} to="/producto/6">Viña VENTISQUERO</NavDropdown.Item>
                 </NavDropdown>
                 <NavLink to="/categoria/vinas" className="nav-link">Viñas</NavLink>
               </Nav>
-              <CartWidget/>
+              {cantidadTotal > 0  ? <CartWidget/> : null}
             </Navbar.Collapse>
           </Navbar>
         </>

@@ -7,13 +7,19 @@ const { Provider } = contexto;
 const MiCustomProvider = ({ children }) => {
 
   const [carrito, setCarrito] = useState([])
-  const [cantidadTotal, setCantidad_total] = useState(0)
-  const [precioTotal, setPrecio_total] = useState(0)
+  const [cantidadTotal, setCantidadTotal] = useState(0)
+  const [precioTotal, setPrecioTotal] = useState(0)
 
   const estaEnCarrito = (id) => { return carrito.find((e) => e.id === id); }
 
-  const vaciarCarrito = () => { setCarrito([]) }
+// ***** LIMPIAR CARRO
+  const vaciarCarrito = () => { 
+    setCarrito([]) 
+    setPrecioTotal(0)
+    setCantidadTotal(0) 
+  }
  
+// ***** AGREGAR ITEM
   const agregarItem = (item,cantidad) => {
     
     const copiaCarrito = [...carrito]
@@ -22,30 +28,48 @@ const MiCustomProvider = ({ children }) => {
 	
     // si el item ya existe, solo aumento la cantidad
     if (itemEnCarrito) {
-        copiaCarrito[copiaCarrito.findIndex((prod) => prod.id === itemEnCarrito.id)].quantity += cantidad
+        copiaCarrito[copiaCarrito.findIndex((prod) => prod.id === itemEnCarrito.id)].cantidad += cantidad
         setCarrito(copiaCarrito)
-        setPrecio_total(precioTotal + itemEnCarrito.precio)
-        setCantidad_total(cantidadTotal + cantidad)
+        setPrecioTotal(precioTotal + itemEnCarrito.precio)
+        setCantidadTotal(cantidadTotal + cantidad)
         return
     }
 
     // sino existe, lo agrego al carrito
-    item.quantity = cantidad
+    item.cantidad = cantidad
     setCarrito([...copiaCarrito, item])
-    setPrecio_total(precioTotal + item.precio)
-    setCantidad_total(cantidadTotal + cantidad)
+    setPrecioTotal(precioTotal + (item.precio * cantidad))
+    setCantidadTotal(cantidadTotal + cantidad)
   }
 
+// ***** ELIMINAR ITEM
   const eliminarItem = (item) => {
+
     if (!(estaEnCarrito(item.id))) {
         return
     }
+
+    setPrecioTotal(precioTotal - (item.precio * item.cantidad)) 
+    setCantidadTotal(cantidadTotal - item.cantidad)
+
     const copiaCarrito = [...carrito]
     const tmpCarro = copiaCarrito.filter((indice) => indice.id !== item.id)
     setCarrito(tmpCarro)
   }
 
-  const valorDelContexto = {cantidadTotal, precioTotal, carrito, agregarItem ,eliminarItem ,vaciarCarrito ,estaEnCarrito}
+// ***** RESTA UN ITEM DEL PRODUCTO EN EL CARRITO
+  const restaUnItem = (item) => {
+    const pos = carrito.indexOf(item);
+    if(carrito[pos].cantidad > 1)
+    {
+      carrito[pos].cantidad = parseInt(carrito[pos].cantidad) - 1;
+      setCarrito(carrito.concat([]));
+      setPrecioTotal(precioTotal - item.precio)
+      setCantidadTotal(cantidadTotal - 1)
+    }
+  }
+
+  const valorDelContexto = {cantidadTotal, precioTotal, carrito, agregarItem ,eliminarItem, vaciarCarrito ,estaEnCarrito, restaUnItem, vaciarCarrito}
 
   return (
     <Provider value={valorDelContexto} > {children} </Provider>
