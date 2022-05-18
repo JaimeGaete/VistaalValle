@@ -26,6 +26,8 @@ const NavBar = ({ sitio }) => {
                   <NavDropdown.Item as={NavLink} to="/producto/6">Viña VENTISQUERO</NavDropdown.Item>
                 </NavDropdown>
                 <NavLink to="/categoria/vinas" className="nav-link">Viñas</NavLink>
+                <NavLink to="/categoria/nieve" className="nav-link">Nieve</NavLink>
+                <NavLink to="/categoria/paine" className="nav-link">Torres del Paine</NavLink>
               </Nav>
               {cantidadTotal > 0  ? <CartWidget/> : null}
             </Navbar.Collapse>

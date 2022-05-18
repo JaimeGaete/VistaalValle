@@ -16,7 +16,7 @@ const ItemListContainer = () => {
     toast.info("Cargando productos...")
 
     const productosCollection = collection(db, "productos")
-    const consulta = getDocs (productosCollection)
+    const consulta = getDocs(productosCollection)
 
     consulta
       .then((resultado) => {
@@ -24,7 +24,13 @@ const ItemListContainer = () => {
           console.log(doc.data())
           return doc.data()
         } )
-        setProducto(productos)
+        /* inicio filtro */
+        if(categoriaId===undefined){
+          setProducto(productos)
+        } else {
+          setProducto(productos.filter(categoria=>categoria.categoriaId===categoriaId))
+        }
+        /* fin filtro */
         setCargando(false)
       })
       .catch((error) => {
@@ -33,26 +39,6 @@ const ItemListContainer = () => {
       .finally(() => {
         toast.dismiss()
       })
-
-
-    /*
-    const pedido = new Promise ((res)=>{
-      setTimeout(()=>{
-      res(catalogo)
-      },200)
-    })
-    .then(()=>{
-      if(categoriaId===undefined){
-        setCargando(false)
-        setProducto(catalogo)
-        toast.dismiss()
-      } else {
-        setProducto(catalogo.filter(categoria=>categoria.categoriaId===categoriaId))
-        setCargando(false)
-        toast.dismiss()
-      }
-      toast.success("Productos Cargados")
-    })*/
   },[categoriaId])
   
 
