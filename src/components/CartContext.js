@@ -22,17 +22,12 @@ const MiCustomProvider = ({ children }) => {
 // ***** AGREGAR ITEM
   const agregarItem = (id, item,cantidad) => {
     
-    console.log("agregarItem")
-
     const copiaCarrito = [...carrito]
     
-    console.log(id)
-
     const itemEnCarrito = estaEnCarrito(id)
 	
     // si el item ya existe, solo aumento la cantidad
     if (itemEnCarrito) {
-        console.log ("ya existe ")
         copiaCarrito[copiaCarrito.findIndex((prod) => prod.id === itemEnCarrito.id)].cantidad += cantidad
         setCarrito(copiaCarrito)
         setPrecioTotal(precioTotal + itemEnCarrito.precio)
@@ -41,7 +36,6 @@ const MiCustomProvider = ({ children }) => {
     }
 
     // sino existe, lo agrego al carrito
-    console.log ("es nuevo  ")
     item.id = id
     item.cantidad = cantidad
     setCarrito([...copiaCarrito, item])
@@ -76,7 +70,7 @@ const MiCustomProvider = ({ children }) => {
     }
   }
 
-  const valorDelContexto = {cantidadTotal, precioTotal, carrito, agregarItem ,eliminarItem, vaciarCarrito ,estaEnCarrito, restaUnItem, vaciarCarrito}
+  const valorDelContexto = {cantidadTotal, precioTotal, carrito, agregarItem ,eliminarItem, vaciarCarrito ,estaEnCarrito, restaUnItem}
 
   return (
     <Provider value={valorDelContexto} > {children} </Provider>

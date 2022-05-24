@@ -1,11 +1,11 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { contexto } from "./CartContext"
 import { Link } from 'react-router-dom'
 
 const Carrito = () => {
 
   const {cantidadTotal, precioTotal, carrito, agregarItem, restaUnItem, eliminarItem, vaciarCarrito} = useContext(contexto)
-  
+
   return (
     <>
     {cantidadTotal >0 ? 
@@ -29,6 +29,8 @@ const Carrito = () => {
           <h4>Total: USD{precioTotal}</h4>
           <br></br>
           <button onClick={()=>{vaciarCarrito()}}>Limpiar carrito</button>
+          <br></br>
+          <button><Link to="/finalizar">Terminar Compra</Link></button>
       </div>
     )
     :
@@ -43,6 +45,5 @@ const Carrito = () => {
     </>
   )
 }
-
 
 export default Carrito
