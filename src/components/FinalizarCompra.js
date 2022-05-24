@@ -40,7 +40,7 @@ const FinalizarCompra = () => {
     (
       <div>
         <h3>Compra exitosa!</h3>
-        <h4>ID: {idCompra}</h4>
+        <h4>ID de la compra: {idCompra}</h4>
         <br></br>
         <button><Link to="/">Seguir Comprando</Link></button>        
       </div>
