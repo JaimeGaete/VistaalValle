@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import ItemDetail from './ItemDetail'
 import { toast } from "react-toastify"
 import { db } from './firebase'
-import { collection, getDocs } from 'firebase/firestore'
+import { collection, getDoc, doc } from 'firebase/firestore'
 
 const ItemDetailContainer = () => {
 
@@ -16,20 +16,12 @@ const ItemDetailContainer = () => {
       toast.info("Cargando detalle del producto ...")
       
       const productosCollection = collection(db, "productos")
-      const consulta = getDocs(productosCollection)
-      
-      consulta
-      .then((catalogo) => {
-        const productos = catalogo.docs.map(doc=>{ return doc.data() } )
-        if (productos.size === 0) 
-        {
-          console.log("No existen resultados")
-          setProducto(null)
-        }
-        else {
-          const resultado = productos.filter((item)=>{ return item.id==id })[0]
-          setProducto(resultado)
-        }
+      const queryId = doc(productosCollection, id)
+      var consultaFiltro = getDoc(queryId)
+
+      consultaFiltro
+      .then((resultado) => {
+        setProducto(resultado.data())
         setCargando(false)
       })
       .catch((error) => {
@@ -38,14 +30,14 @@ const ItemDetailContainer = () => {
       .finally(() => {
         toast.dismiss()
       })
-    }, [id])
+    },[id])
 
   if(cargando){
     return (<p>Cargando...</p>);
   }else{
     return (
       <>
-        <ItemDetail key={producto.id} producto={producto}/>
+        <ItemDetail key={id} producto={producto} id={id}/>
       </>
     )
   }

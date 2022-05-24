@@ -1,7 +1,6 @@
 import { useContext } from "react"
 import { contexto } from "./CartContext"
 import { Link } from 'react-router-dom'
-import { db } from './firebase'
 
 const Carrito = () => {
 
@@ -16,10 +15,10 @@ const Carrito = () => {
         <br></br>
           <ul>
               {carrito.map(item => (
-                <li key={item.id}> {item.nombre} &nbsp; ${item.precio} &nbsp;&nbsp;
+                <li key={item.id}> {item.nombre} &nbsp; USD{item.precio} &nbsp;&nbsp;
                 <button onClick={()=>{restaUnItem(item)}}>-</button>&nbsp;&nbsp;
                 {item.cantidad}&nbsp;&nbsp;
-                <button onClick={()=>{agregarItem(item,1)}}>+</button>
+                <button onClick={()=>{agregarItem(item.id,item,1)}}>+</button>
                 &nbsp;&nbsp;
                 <button onClick={()=>{eliminarItem(item,1)}}>Eliminar Item</button>
                 </li>
@@ -27,7 +26,7 @@ const Carrito = () => {
           </ul>
           <br></br>
           <h4>Cantidad de productos: {cantidadTotal}</h4>      
-          <h4>Total: ${precioTotal}</h4>
+          <h4>Total: USD{precioTotal}</h4>
           <br></br>
           <button onClick={()=>{vaciarCarrito()}}>Limpiar carrito</button>
       </div>

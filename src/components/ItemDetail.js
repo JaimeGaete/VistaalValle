@@ -3,7 +3,7 @@ import { useContext, useState } from "react"
 import ItemCount from "./ItemCount";
 import { contexto } from "./CartContext";
 
-const ItemDetail = ({ producto }) => {
+const ItemDetail = ({ id, producto }) => {
 
   // aca recibo la cantidad de ItemCount, y estado para ocultar el componente cuando se confirma la cantidad
   const[cantidadCounter, setCantidadCounter] = useState(0)
@@ -14,7 +14,7 @@ const ItemDetail = ({ producto }) => {
   const onAdd = (cantidad) => { 
     setCantidadCounter(cantidad) 
     setIsCounter(true)
-    agregarItem(producto, cantidad)
+    agregarItem(id, producto, cantidad)
   }
 
   return (    
@@ -23,7 +23,7 @@ const ItemDetail = ({ producto }) => {
           <img src={producto.imagen} alt="{producto.nombre}" style={{ width: '10rem' }}/>    
           <p>{producto.description} </p>
           <p>Stock: {producto.stock} </p>
-          <p>Precio: $ {producto.precio} </p>
+          <p>Precio: USD{producto.precio} </p>
           {isCounter ? <button><Link to="/carrito">Terminar mi compra</Link></button> : <ItemCount init={1} stock={producto.stock} onAdd={onAdd} /> }
           <br></br>
         </article>

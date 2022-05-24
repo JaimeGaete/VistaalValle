@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import ItemList from "./ItemList"
 import { toast } from "react-toastify"
 import { db } from './firebase'
-import { collection, getDocs } from 'firebase/firestore'
+import { collection, getDocs, query, where } from 'firebase/firestore'
 
 const ItemListContainer = () => {
 
@@ -16,32 +16,48 @@ const ItemListContainer = () => {
     toast.info("Cargando productos...")
 
     const productosCollection = collection(db, "productos")
-    const consulta = getDocs(productosCollection)
 
-    consulta
-      .then((resultado) => {
-        const productos = resultado.docs.map(doc=>{ 
-          console.log(doc.data())
-          return doc.data()
-        } )
-        /* inicio filtro */
-        if(categoriaId===undefined){
+    if(categoriaId===undefined) {
+      var consultaTodos = getDocs(productosCollection)
+      consultaTodos
+        .then((resultado) => {
+          const productos = resultado.docs.map(doc=>{ 
+            const productoConId = doc.data()
+            productoConId.id = doc.id
+            return productoConId
+          } )
           setProducto(productos)
-        } else {
-          setProducto(productos.filter(categoria=>categoria.categoriaId===categoriaId))
-        }
-        /* fin filtro */
-        setCargando(false)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-      .finally(() => {
-        toast.dismiss()
-      })
+          setCargando(false)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+        .finally(() => {
+          toast.dismiss()
+        })
+    }
+    else {
+      const queryCategoria = query(productosCollection, where("categoriaId", "==", categoriaId))
+      var consultaFiltro = getDocs(queryCategoria)
+        consultaFiltro
+        .then((resultado) => {
+          const productosFiltrados = resultado.docs.map(doc=>{ 
+            const productoConId = doc.data()
+            productoConId.id = doc.id
+            return productoConId            
+          } )
+          setProducto(productosFiltrados)
+          setCargando(false)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+        .finally(() => {
+          toast.dismiss()
+        })
+    }
   },[categoriaId])
   
-
   if(cargando){
       return <p>Cargando...</p>;
   }else{
