@@ -19,15 +19,17 @@ const NavBar = ({ sitio }) => {
             <Navbar.Toggle />
             <Navbar.Collapse>
               <Nav className="mr-auto">
-                <NavLink to="/categoria/spa" className="nav-link">SPA</NavLink>
-                <NavDropdown title="Productos">
+              <NavDropdown title="Experiencias">
+                  <NavDropdown.Item as={NavLink} to="/categoria/spa">SPA</NavDropdown.Item>
+                  <NavDropdown.Item as={NavLink} to="/categoria/nieve">Tour a la Nieve</NavDropdown.Item>
+                  <NavDropdown.Item as={NavLink} to="/categoria/paine">Torres del Paine</NavDropdown.Item>
+                </NavDropdown>
+                <NavDropdown title="Tienda">
                   <NavDropdown.Item as={NavLink} to="/producto/NMTbkJgX7RMJCWVY2zrX">Vinos</NavDropdown.Item>
                   <NavDropdown.Item as={NavLink} to="/producto/SCJKhBw35En9ROhwIcaD">Viña SEÑA Ensamblaje</NavDropdown.Item>
                   <NavDropdown.Item as={NavLink} to="/producto/y3nlfC7HT7I9tOkunLB9">Viña VENTISQUERO</NavDropdown.Item>
                 </NavDropdown>
-                <NavLink to="/categoria/vinas" className="nav-link">Viñas</NavLink>
-                <NavLink to="/categoria/nieve" className="nav-link">Nieve</NavLink>
-                <NavLink to="/categoria/paine" className="nav-link">Torres del Paine</NavLink>
+                <NavLink to="/categoria/vinas" className="nav-link">Tour de Vinos</NavLink>
               </Nav>
               {cantidadTotal > 0  ? <CartWidget/> : null}
             </Navbar.Collapse>

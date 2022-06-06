@@ -1,4 +1,5 @@
 import { useState } from "react"
+import Button from '@mui/material/Button'
 
 const ItemCount = ({init, stock, onAdd}) => {
   
@@ -15,7 +16,7 @@ const ItemCount = ({init, stock, onAdd}) => {
 
   const restar = () => 
   {
-    if (cantidad > 0) {
+    if (cantidad > 1) {
       setCantidad(cantidad - 1)
       stock = stock + 1
      }
@@ -33,10 +34,12 @@ const ItemCount = ({init, stock, onAdd}) => {
   {
     return (
       <div>
-        <p>Cantidad : {cantidad}</p>
-        <button onClick={sumar} className="material-icons">add</button>
-        <button onClick={confirmar}>Confirmar</button>
+        <p><b>CANTIDAD</b></p>
         <button onClick={restar} className="material-icons">remove</button>
+        <span className="item_agregar">&nbsp;{cantidad}&nbsp;</span>
+        <button onClick={sumar} className="material-icons">add</button>
+        <br></br><br></br>
+        <Button variant="contained" onClick={confirmar}>Agregar al Carrito</Button>
       </div>
     )
   }
@@ -44,10 +47,12 @@ const ItemCount = ({init, stock, onAdd}) => {
   {
     return (
       <div>
-        <p>Cantidad : {cantidad}</p>
-        <button onClick={sumar} className="material-icons">add</button>
-        <button onClick={confirmar}>Confirmar</button>
+        <p><b>CANTIDAD</b></p>
         <button onClick={restar} className="material-icons">remove</button>
+        <span className="item_agregar">&nbsp;{cantidad}&nbsp;</span>
+        <button onClick={sumar} className="material-icons">add</button>
+        <br></br><br></br>
+        <Button variant="contained" onClick={confirmar}>Agregar al Carrito</Button>
         <p>Se confirmaron {cantidad} unidades!</p>
       </div>
     )

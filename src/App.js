@@ -1,13 +1,13 @@
-import './App.css';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import './App.css'
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 import NavBar from './components/NavBar'
-import ItemListContainer from './components/ItemListContainer';
-import ItemDetailContainer from './components/ItemDetailContainer';
-import Carrito from './components/Carrito';
-import FinalizarCompra from './components/FinalizarCompra';
-import { ToastContainer } from 'react-toastify';
+import ItemListContainer from './components/ItemListContainer'
+import ItemDetailContainer from './components/ItemDetailContainer'
+import Carrito from './components/Carrito'
+import FinalizarCompra from './components/FinalizarCompra'
+import { ToastContainer } from 'react-toastify'
 import "react-toastify/dist/ReactToastify.css"
-import MiCustomProvider from "./components/CartContext";
+import MiCustomProvider from "./components/CartContext"
 
 const App = () => {
 
