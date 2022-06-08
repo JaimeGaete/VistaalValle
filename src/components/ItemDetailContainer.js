@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import ItemDetail from './ItemDetail'
 import { toast } from "react-toastify"
 import { db } from './firebase'
 import { collection, getDoc, doc } from 'firebase/firestore'
+import ItemDetail from './ItemDetail'
+import { Link } from 'react-router-dom'
+import Button from '@mui/material/Button'
 
 const ItemDetailContainer = () => {
 
   const [cargando, setCargando] = useState(true)
   const [producto, setProducto] = useState({})
+  const [noExiste, setNoExiste] = useState(false)
   const {id} = useParams()
 
   useEffect(()=>{
@@ -21,8 +24,15 @@ const ItemDetailContainer = () => {
 
       consultaFiltro
       .then((resultado) => {
-        setProducto(resultado.data())
-        setCargando(false)
+        if (resultado.exists())
+        {
+          setProducto(resultado.data())
+          setCargando(false)
+        }
+        else
+        {
+          setNoExiste(true)
+        }
       })
       .catch((error) => {
         console.log(error)
@@ -32,15 +42,12 @@ const ItemDetailContainer = () => {
       })
     },[id])
 
-  if(cargando){
-    return (<p>Cargando...</p>);
-  }else{
     return (
       <>
-        <ItemDetail key={id} producto={producto} id={id}/>
+      {noExiste ? (<div>El producto seleccionado no existe. Intente con otro producto de la lista.<br></br><br></br> <Link to="/"><Button variant="contained">Seguir Comprando</Button></Link></div>) : <ItemDetail key={id} producto={producto} id={id}/>
+      }
       </>
     )
-  }
 }
 
 export default ItemDetailContainer

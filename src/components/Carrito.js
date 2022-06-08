@@ -15,7 +15,7 @@ const Carrito = () => {
         <br></br>
           <ul>
               {carrito.map(item => (
-                <li key={item.id}> {item.nombre} &nbsp; USD{item.precio} &nbsp;&nbsp;
+                <li key={item.id}> {item.nombre} &nbsp;<span className="precio">USD ${item.precio}</span>&nbsp;&nbsp;
                 <button onClick={()=>{restaUnItem(item)}}>-</button>&nbsp;&nbsp;
                 {item.cantidad}&nbsp;&nbsp;
                 <button onClick={()=>{agregarItem(item.id,item,1)}}>+</button>
@@ -26,7 +26,7 @@ const Carrito = () => {
           </ul>
           <br></br>
           <h4>Cantidad de productos: {cantidadTotal}</h4>      
-          <h4>Total: USD{precioTotal}</h4>
+          <h4><span className="precio">Total: USD ${precioTotal}</span></h4>
           <br></br>
           <button onClick={()=>{vaciarCarrito()}}>Limpiar carrito</button>
           <br></br>

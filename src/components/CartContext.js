@@ -10,7 +10,10 @@ const MiCustomProvider = ({ children }) => {
   const [cantidadTotal, setCantidadTotal] = useState(0)
   const [precioTotal, setPrecioTotal] = useState(0)
 
-  const estaEnCarrito = (id) => { return carrito.find((e) => e.id === id); }
+  const estaEnCarrito = (id) => 
+  { 
+    return carrito.find((e) => e.id === id); 
+  }
 
 // ***** LIMPIAR CARRO
   const vaciarCarrito = () => { 
@@ -20,7 +23,7 @@ const MiCustomProvider = ({ children }) => {
   }
  
 // ***** AGREGAR ITEM
-  const agregarItem = (id, item,cantidad) => {
+  const agregarItem = (id,item,cantidad) => {
     
     const copiaCarrito = [...carrito]
     

@@ -35,10 +35,12 @@ const ItemCount = ({init, stock, onAdd}) => {
     return (
       <div>
         <p><b>CANTIDAD</b></p>
+        <p className="item_agregar">
         <button onClick={restar} className="material-icons">remove</button>
-        <span className="item_agregar">&nbsp;{cantidad}&nbsp;</span>
+        &nbsp;{cantidad}&nbsp;
         <button onClick={sumar} className="material-icons">add</button>
-        <br></br><br></br>
+        </p>
+        <br></br>
         <Button variant="contained" onClick={confirmar}>Agregar al Carrito</Button>
       </div>
     )
@@ -48,10 +50,11 @@ const ItemCount = ({init, stock, onAdd}) => {
     return (
       <div>
         <p><b>CANTIDAD</b></p>
-        <button onClick={restar} className="material-icons">remove</button>
-        <span className="item_agregar">&nbsp;{cantidad}&nbsp;</span>
+        <p className="item_agregar"><button onClick={restar} className="material-icons">remove</button>
+        &nbsp;{cantidad}&nbsp;
         <button onClick={sumar} className="material-icons">add</button>
-        <br></br><br></br>
+        </p>        
+        <br></br>
         <Button variant="contained" onClick={confirmar}>Agregar al Carrito</Button>
         <p>Se confirmaron {cantidad} unidades!</p>
       </div>
