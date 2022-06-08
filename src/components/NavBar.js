@@ -9,7 +9,6 @@ import { contexto } from "./CartContext";
 
 const NavBar = ({ sitio }) => {
 
-    // voy a usar cantidad_total para mostrar/ocultar el CartWidget
     const {cantidadTotal} = useContext(contexto)
 
     return (

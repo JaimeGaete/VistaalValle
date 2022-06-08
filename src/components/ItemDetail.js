@@ -6,14 +6,10 @@ import Button from '@mui/material/Button'
 
 const ItemDetail = ({ id, producto }) => {
 
-  // aca recibo la cantidad de ItemCount, y estado para ocultar el componente cuando se confirma la cantidad
-  const[cantidadCounter, setCantidadCounter] = useState(0)
   const [isCounter, setIsCounter] = useState(false)
-  
   const {agregarItem} = useContext(contexto)
 
   const onAdd = (cantidad) => { 
-    setCantidadCounter(cantidad) 
     setIsCounter(true)
     agregarItem(id, producto, cantidad)
   }

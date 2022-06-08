@@ -1,6 +1,7 @@
-import { useContext, useState } from "react"
+import { useContext } from "react"
 import { contexto } from "./CartContext"
 import { Link } from 'react-router-dom'
+import Button from '@mui/material/Button'
 
 const Carrito = () => {
 
@@ -20,17 +21,17 @@ const Carrito = () => {
                 {item.cantidad}&nbsp;&nbsp;
                 <button onClick={()=>{agregarItem(item.id,item,1)}}>+</button>
                 &nbsp;&nbsp;
-                <button onClick={()=>{eliminarItem(item,1)}}>Eliminar Item</button>
+                <Button variant="contained" onClick={()=>{eliminarItem(item,1)}}>Eliminar Item</Button>
                 </li>
               ))}
           </ul>
           <br></br>
-          <h4>Cantidad de productos: {cantidadTotal}</h4>      
+          <h4>Productos: {cantidadTotal}</h4>      
           <h4><span className="precio">Total: USD ${precioTotal}</span></h4>
           <br></br>
-          <button onClick={()=>{vaciarCarrito()}}>Limpiar carrito</button>
-          <br></br>
-          <button><Link to="/finalizar">Terminar Compra</Link></button>
+          <Button variant="contained" onClick={()=>{vaciarCarrito()}}>Limpiar carrito</Button>
+          <br></br><br></br>
+          <Link to="/finalizar"><Button variant="contained">Terminar Compra</Button></Link>
       </div>
     )
     :
@@ -38,7 +39,7 @@ const Carrito = () => {
       <div>
       <h3>No existen productos en el carro.</h3>
       <br></br> 
-      <button><Link to="/">Seguir Comprando</Link></button>
+      <Link to="/"><Button variant="contained">Seguir Comprando</Button></Link>
       </div>
     )  
     }

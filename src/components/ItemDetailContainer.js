@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { toast } from "react-toastify"
 import { db } from './firebase'
 import { collection, getDoc, doc } from 'firebase/firestore'
 import ItemDetail from './ItemDetail'
+import { toast } from "react-toastify"
 import Button from '@mui/material/Button'
 
 const ItemDetailContainer = () => {
@@ -41,12 +41,17 @@ const ItemDetailContainer = () => {
       })
     },[id])
 
-    return (
+
+  if(cargando){
+      return <p>Cargando...</p>;
+  }else{
+    return(
       <>
       {noExiste ? (<div>El producto seleccionado no existe. Intente con otro producto de la lista.<br></br><br></br> <Link to="/"><Button variant="contained">Seguir Comprando</Button></Link></div>) : <ItemDetail key={id} producto={producto} id={id}/>
       }
       </>
     )
+  }
 }
 
 export default ItemDetailContainer
