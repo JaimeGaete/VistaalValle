@@ -19,6 +19,7 @@ const NavBar = ({ sitio }) => {
             <Navbar.Collapse>
               <Nav className="mr-auto">
               <NavDropdown title="Experiencias">
+                  <NavDropdown.Item as={NavLink} to="/categoria/geyser">Geysers del Tatio</NavDropdown.Item>
                   <NavDropdown.Item as={NavLink} to="/categoria/spa">SPA</NavDropdown.Item>
                   <NavDropdown.Item as={NavLink} to="/categoria/nieve">Tour a la Nieve</NavDropdown.Item>
                   <NavDropdown.Item as={NavLink} to="/categoria/paine">Torres del Paine</NavDropdown.Item>
