@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { toast } from "react-toastify"
 import { db } from './firebase'
 import { collection, getDoc, doc } from 'firebase/firestore'
 import ItemDetail from './ItemDetail'
-import { Link } from 'react-router-dom'
 import Button from '@mui/material/Button'
 
 const ItemDetailContainer = () => {
