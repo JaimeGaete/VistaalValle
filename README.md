@@ -6,25 +6,25 @@ __________________________________________
 
 El proyecto "Vista al Valle" es un sitio de e-commerce de Experiencias y Productos tipicos de Chile. Por ejemplo, las Torres del Paine y ventas de vinos.
 
-## :large_green_circle: Considera:
+## Considera:
 - Barra de navegación: link por categoría, por producto y link al carro de compras.
 - Carrito de compras.
 - Detalle de los productos.
 - Listado de todos los artículos disponibles al entrar al sitio.
 __________________________________________
 
-## :large_blue_circle: Herramientas Utilizadas:
+## Herramientas Utilizadas:
 - React.
 - Firebase.
 
-## :large_blue_circle: Librerías:
+## Librerías:
 - React Bootstrap.
 - React Router.
 - ToastContainer.
 - Material UI.
 __________________________________________
 
-## :large_blue_circle: Creación e Instalación:
+## Creación e Instalación:
 Este proyecto se inició con [Create React App](https://github.com/facebook/create-react-app).
 
 ** Debes instalar  Node.js en tu computador** [(descargar Node.js)](https://nodejs.org/es/download/).
