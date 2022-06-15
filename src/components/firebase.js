@@ -1,18 +1,16 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyC6nG9KvOdkUQNT-WOcctdvdvv2fMz1EfA",
-  authDomain: "vistaalvalle-margoti.firebaseapp.com",
-  projectId: "vistaalvalle-margoti",
-  storageBucket: "vistaalvalle-margoti.appspot.com",
-  messagingSenderId: "732967369311",
-  appId: "1:732967369311:web:b43e6b4b4a0054cb9e39ea"
+  apiKey: "AIzaSyBquKgvw5vkeYOSImssuWUtfogO0gO9xTE",
+  authDomain: "vistaalvalle2-fe90b.firebaseapp.com",
+  projectId: "vistaalvalle2-fe90b",
+  storageBucket: "vistaalvalle2-fe90b.appspot.com",
+  messagingSenderId: "502393747965",
+  appId: "1:502393747965:web:43bfe8e46ba1883e698194"
+
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-export const db = getFirestore(app); // representa toda la BD
+export const db = getFirestore(app);
